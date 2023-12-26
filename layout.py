@@ -79,7 +79,7 @@ class Layout:
 
     def getFurthestCorner(self, pacPos):
         poses = [(1,1), (1, self.height - 2), (self.width - 2, 1), (self.width - 2, self.height - 2)]
-        dist, pos = max([(manhattanDistance(p, pacPos), p) for p in poses])
+        dist, pos = max((manhattanDistance(p, pacPos), p) for p in poses)
         return pos
 
     def isVisibleFrom(self, ghostPos, pacPos, pacDirection):
