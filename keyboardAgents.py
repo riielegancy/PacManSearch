@@ -36,14 +36,12 @@ class KeyboardAgent(Agent):
     def getAction( self, state):
         from graphicsUtils import keys_waiting
         from graphicsUtils import keys_pressed
-        keys = keys_waiting() + keys_pressed()
-        if keys != []:
+        if (keys := keys_waiting() + keys_pressed()) != []:
             self.keys = keys
 
         legal = state.getLegalActions(self.index)
-        move = self.getMove(legal)
 
-        if move == Directions.STOP:
+        if (move := self.getMove(legal)) == Directions.STOP:
             # Try to move in the same direction as before
             if self.lastMove in legal:
                 move = self.lastMove
